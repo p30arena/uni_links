@@ -19,6 +19,15 @@ Future<String> getInitialLink() async {
   return initialLink;
 }
 
+/// Returns a [Future], which completes to one of the following:
+///
+///   * the latest stored link (possibly null), on successful invocation;
+///   * a [PlatformException], if the invocation failed in the platform plugin.
+Future<String> getLatestLink() async {
+  final String latestLink = await _mChannel.invokeMethod('getLatestLink');
+  return latestLink;
+}
+
 /// A convenience method that returns the initially stored link
 /// as a new [Uri] object.
 ///
